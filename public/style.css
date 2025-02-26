@@ -1,0 +1,99 @@
+/* Reinicio básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fuente y fondo */
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #ce84d8);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor principal */
+.container {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  
+}
+
+/* Encabezado */
+header h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+header p {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* Sección de carga */
+.upload-section {
+  margin-bottom: 20px;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+.upload-section input[type="file"] {
+  display: none;
+}
+
+#uploadBtn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+#uploadBtn:hover {
+  background-color: #218838;
+}
+
+/* Sección de resultado */
+.result-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+#resultado {
+  background-color: #f1f1f1;
+  padding: 15px;
+  border-radius: 5px;
+  color: #555;
+  min-height: 80px;
+  white-space: pre-wrap;
+  text-align: left;
+}

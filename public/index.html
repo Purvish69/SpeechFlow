@@ -4,17 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Whisper Transcripción</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1>Sube un audio para transcribirlo</h1>
-    <input type="file" id="audioFile" accept="audio/*" />
-    <button onclick="subirAudio()">Subir y Transcribir</button>
-    <p id="resultado"></p>
+    <div class="container">
+      <header>
+        <h1>Whisper Transcripción</h1>
+        <p>Sube un audio y transcríbelo automáticamente</p>
+      </header>
+      <main>
+        <div class="upload-section">
+          <label for="audioFile" class="custom-file-upload">Seleccionar Audio</label>
+          <input type="file" id="audioFile" accept="audio/*" />
+          <button id="uploadBtn" onclick="subirAudio()">Subir y Transcribir</button>
+        </div>
+        <div class="result-section">
+          <h2>Transcripción</h2>
+          <p id="resultado">Aquí se mostrará el resultado de la transcripción</p>
+        </div>
+      </main>
+    </div>
 
     <script>
       async function subirAudio() {
         const fileInput = document.getElementById("audioFile");
-        if (!fileInput.files.length) return alert("Selecciona un archivo");
+        if (!fileInput.files.length) {
+          alert("Por favor, selecciona un archivo de audio");
+          return;
+        }
 
         const formData = new FormData();
         formData.append("audio", fileInput.files[0]);
@@ -30,10 +51,12 @@
           }
 
           const data = await response.json();
-          document.getElementById("resultado").innerText = data.text || "Error en la transcripción";
+          document.getElementById("resultado").innerText =
+            data.text || "Error en la transcripción";
         } catch (error) {
           console.error("Error:", error);
-          document.getElementById("resultado").innerText = "Error en la transcripción";
+          document.getElementById("resultado").innerText =
+            "Error en la transcripción";
         }
       }
     </script>
