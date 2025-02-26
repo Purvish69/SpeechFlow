@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Whisper Transcripción</title>
+  </head>
+  <body>
+    <h1>Sube un audio para transcribirlo</h1>
+    <input type="file" id="audioFile" accept="audio/*" />
+    <button onclick="subirAudio()">Subir y Transcribir</button>
+    <p id="resultado"></p>
+
+    <script>
+      async function subirAudio() {
+        const fileInput = document.getElementById("audioFile");
+        if (!fileInput.files.length) return alert("Selecciona un archivo");
+
+        const formData = new FormData();
+        formData.append("audio", fileInput.files[0]);
+
+        try {
+          const response = await fetch("http://localhost:3000/transcribe", {
+            method: "POST",
+            body: formData,
+          });
+
+          if (!response.ok) {
+            throw new Error("Error en la solicitud");
+          }
+
+          const data = await response.json();
+          document.getElementById("resultado").innerText = data.text || "Error en la transcripción";
+        } catch (error) {
+          console.error("Error:", error);
+          document.getElementById("resultado").innerText = "Error en la transcripción";
+        }
+      }
+    </script>
+  </body>
+</html>
